@@ -6,6 +6,9 @@ Participants:
 
 In this repostiory, we replicate the data collection pipeline of the paper: "*[How are issue reports discussed in Gitter chat rooms?](https://softwareprocess.es/pubs/sahar2020JSS-Gitter-Issues.pdf "How are issue reports discussed in Gitter chat rooms?")*" using [GrimoireLab](https://github.com/chaoss/grimoirelab "GrimoireLab").
 
+The components of GrimoireLab we use are:
+![image](https://user-images.githubusercontent.com/9467666/152590177-e0286a2b-f2ed-460a-81f5-84e779fb45c8.png)
+
 ### Projects Collected
 For the hackathon, we chose a 7 of the original 24 Gitter chat rooms to test our GrimoireLab data pipeline. The projects are:
 - aws/aws-sdk-go ([Github](https://github.com/aws/aws-sdk-go "Github") | [Gitter](https://gitter.im/aws/aws-sdk-go "Gitter"))
@@ -81,9 +84,6 @@ docker-compose up -d
 - The Kibiter dashboard can be accessed at: `http://localhost:5601`
 - The ElasticSearch instance can be accessed at: `http://localhost:9200`
 - The HatStall web interface can be accessed at: `http://localhost:8000`
-
-These are the components of GrimoireLab we use:
-![image](https://user-images.githubusercontent.com/9467666/152590177-e0286a2b-f2ed-460a-81f5-84e779fb45c8.png)
 
 #### Useful commands
 - See list of containers running: `docker ps`
