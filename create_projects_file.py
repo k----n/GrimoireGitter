@@ -25,5 +25,5 @@ for room in gitter_rooms:
             "gitter": [ "https://gitter.im/" + room],
         }
 
-with open(' grimoirelab-settings/projects.json', 'w') as f:
+with open('grimoirelab-settings/projects.json', 'w') as f:
     json.dump(projects, f, indent=4)
