@@ -78,10 +78,12 @@ Once all the setup steps have been completed, in the root repository run the fol
 ```sh
 docker-compose up -d
 ```
+- The Kibiter dashboard can be accessed at: `http://localhost:5601`
+- The ElasticSearch instance can be accessed at: `http://localhost:9200`
+- The HatStall web interface can be accessed at: `http://localhost:8000`
 
-The Kibiter dashboard can be accessed at: `http://localhost:5601`
-The ElasticSearch instance can be accessed at: `http://localhost:9200`
-The HatStall web interface can be accessed at: `http://localhost:8000`
+These are the components of GrimoireLab we use:
+![image](https://user-images.githubusercontent.com/9467666/152590177-e0286a2b-f2ed-460a-81f5-84e779fb45c8.png)
 
 #### Useful commands
 - See list of containers running: `docker ps`
@@ -127,12 +129,18 @@ docker-compose up -d
 3. Run the `Preliminary Results.ipynb` notebook by navigating to the following `Run > Restart Kenel and Run All Cells...`
 
 To generate the visualizations replicating a comparison between the:
-1. The Count of Gitter API Issues: It is generated in `Preliminary Results.ipynb` with the output to `jupyter/output/api_counts.pdf`
-2. Resolution time comparison between previous pipeline and GrimoireLab: Run the RScript `resolution_time.R` (instructions for input files are in the comments)
-3. Ratio of number of issue comments in Github one week after and before issue reference in Gitter: Run the RScript `comments-ratio-boxplot.R` (instructions for input files are in the comments)
+1. **The Count of Gitter API Issues**: It is generated in `Preliminary Results.ipynb` with the output to `jupyter/output/api_counts.pdf`
+![image](https://user-images.githubusercontent.com/9467666/152589685-81f6ed72-df6e-4965-852b-eb6cffa5989d.png)
+2. **Resolution time comparison between previous pipeline and GrimoireLab**: Run the RScript `resolution_time.R` (instructions for input files are in the comments)
+![image](https://user-images.githubusercontent.com/9467666/152589773-9929ddaf-8ef7-4a9c-a52c-f65a0b47210e.png)
+3. **Ratio of number of issue comments in Github one week after and before issue reference in Gitter**: Run the RScript `comments-ratio-boxplot.R` (instructions for input files are in the comments)
+![image](https://user-images.githubusercontent.com/9467666/152589935-8d6345e7-625d-48ca-9170-8eec2ef4fd5b.png)
+
 
 ## Exploring Data
-To explore the data, you can use the Kibiter dashboard.
+To explore the data, you can use the Kibiter dashboard at http://localhost:5601
+
+![image](https://user-images.githubusercontent.com/9467666/152590037-7fb2a10b-a173-4a2a-936c-133fda6eeb9e.png)
 
 Note that the `gitter` index needs to be refreshed by visiting http://localhost:5601/app/kibana#/management/kibana/indices/gitter and clicking the refresh button in the top right. 
 
