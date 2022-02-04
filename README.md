@@ -104,6 +104,8 @@ We modify the Gitter enrichment of GrimoireElk to do the following:
 - Handle improper URLs from the Gitter API (Issue: https://github.com/chaoss/grimoirelab-elk/issues/1029)
 - Improve issue classfication by leveraging the Github website (Issue: https://github.com/chaoss/grimoirelab-elk/issues/1028)
 
+As a hotfix, we mount the updated file directly to the SirMordred container.
+
 ### SortingHat Identity Alignment
 We also implement a naive script, to align identities that SortingHat may not have automatically aligned.
 
