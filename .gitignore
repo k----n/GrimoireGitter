@@ -1,4 +1,6 @@
 grimoirelab-settings/setup.cfg
+.local
+.jupyter
 
 # Created by https://www.toptal.com/developers/gitignore/api/python,linux,windows,macos,jupyternotebooks
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,linux,windows,macos,jupyternotebooks

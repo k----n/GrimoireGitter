@@ -1,0 +1,101 @@
+[general]
+short_name = GrimoireGitter
+update = true
+min_update_delay = 60
+debug = false
+logs_dir = /home/bitergia/logs
+aliases_file = /home/bitergia/conf/aliases.json
+
+[projects]
+projects_file = /home/bitergia/conf/projects.json
+
+[es_collection]
+url = http://elasticsearch:9200
+
+[es_enrichment]
+url = http://elasticsearch:9200
+autorefresh = true
+
+[sortinghat]
+host = mariadb
+user = root
+password =
+database = sh
+autoprofile = [github, github2, git, gitter]
+matching = [email, github, username]
+sleep_for = 100
+unaffiliated_group = Unknown
+affiliate = true
+strict_mapping = false
+reset_on_load = false
+identities_api_token = <insert token here>
+
+[panels]
+kibiter_time_from = now-5y
+kibiter_default_index = git
+kibiter_url = http://kibiter:5601
+kibiter_version = 6.1.4-1
+github-comments = true
+
+[phases]
+collection = true
+identities = true
+enrichment = true
+panels = true
+
+[git]
+raw_index = git_raw
+enriched_index = git_enriched
+latest-items = true
+studies = [enrich_onion:git]
+
+[enrich_onion:git]
+in_index = git_enriched
+out_index = git-onion_enriched
+
+[github:issue]
+raw_index = github_raw
+enriched_index = github_enriched
+api-token = [<insert token 1>, <insert token 2>, <insert token 3>]
+category = issue
+sleep-for-rate = true
+no-archive = true
+studies = [enrich_onion:github]
+
+[enrich_onion:github]
+in_index_iss = github_issues_onion-src
+in_index_prs = github_prs_onion-src
+out_index_iss = github-issues-onion_enriched
+out_index_prs = github-prs-onion_enriched
+
+[github:pull]
+raw_index = github-pull_raw
+enriched_index = github-pull_enriched
+api-token = [<insert token 1>, <insert token 2>, <insert token 3>]
+category = pull_request
+sleep-for-rate = true
+no-archive = true
+studies = [enrich_onion:github]
+
+[github2:issue]
+api-token = [<insert token 1>, <insert token 2>, <insert token 3>]
+raw_index = github2-issues_raw
+enriched_index = github2-issues_enriched
+sleep-for-rate = true
+category = issue
+no-archive = true
+
+[github2:pull]
+api-token = [<insert token 1>, <insert token 2>, <insert token 3>]
+raw_index = github2-pull_raw
+enriched_index = github2-pull_enriched
+sleep-for-rate = true
+category = pull_request
+no-archive = true
+
+[gitter]
+raw_index = gitter_raw
+enriched_index = gitter_enriched_raw
+api-token = <insert token here>
+sleep-for-rate = true
+no-archive = true

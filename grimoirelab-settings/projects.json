@@ -1,0 +1,142 @@
+{
+    "PerfectlySoft/Perfect": {
+        "git": [
+            "https://github.com/PerfectlySoft/Perfect"
+        ],
+        "github:issue": [
+            "https://github.com/PerfectlySoft/Perfect"
+        ],
+        "github:pull": [
+            "https://github.com/PerfectlySoft/Perfect"
+        ],
+        "github2:issue": [
+            "https://github.com/PerfectlySoft/Perfect"
+        ],
+        "github2:pull": [
+            "https://github.com/PerfectlySoft/Perfect"
+        ],
+        "gitter": [
+            "https://gitter.im/PerfectlySoft/Perfect"
+        ]
+    },
+    "mailboxer/mailboxer": {
+        "git": [
+            "https://github.com/mailboxer/mailboxer"
+        ],
+        "github:issue": [
+            "https://github.com/mailboxer/mailboxer"
+        ],
+        "github:pull": [
+            "https://github.com/mailboxer/mailboxer"
+        ],
+        "github2:issue": [
+            "https://github.com/mailboxer/mailboxer"
+        ],
+        "github2:pull": [
+            "https://github.com/mailboxer/mailboxer"
+        ],
+        "gitter": [
+            "https://gitter.im/mailboxer/mailboxer"
+        ]
+    },
+    "patchthecode/JTAppleCalendar": {
+        "git": [
+            "https://github.com/patchthecode/JTAppleCalendar"
+        ],
+        "github:issue": [
+            "https://github.com/patchthecode/JTAppleCalendar"
+        ],
+        "github:pull": [
+            "https://github.com/patchthecode/JTAppleCalendar"
+        ],
+        "github2:issue": [
+            "https://github.com/patchthecode/JTAppleCalendar"
+        ],
+        "github2:pull": [
+            "https://github.com/patchthecode/JTAppleCalendar"
+        ],
+        "gitter": [
+            "https://gitter.im/patchthecode/JTAppleCalendar"
+        ]
+    },
+    "aws/aws-sdk-go": {
+        "git": [
+            "https://github.com/aws/aws-sdk-go"
+        ],
+        "github:issue": [
+            "https://github.com/aws/aws-sdk-go"
+        ],
+        "github:pull": [
+            "https://github.com/aws/aws-sdk-go"
+        ],
+        "github2:issue": [
+            "https://github.com/aws/aws-sdk-go"
+        ],
+        "github2:pull": [
+            "https://github.com/aws/aws-sdk-go"
+        ],
+        "gitter": [
+            "https://gitter.im/aws/aws-sdk-go"
+        ]
+    },
+    "amberframework/amber": {
+        "git": [
+            "https://github.com/amberframework/amber"
+        ],
+        "github:issue": [
+            "https://github.com/amberframework/amber"
+        ],
+        "github:pull": [
+            "https://github.com/amberframework/amber"
+        ],
+        "github2:issue": [
+            "https://github.com/amberframework/amber"
+        ],
+        "github2:pull": [
+            "https://github.com/amberframework/amber"
+        ],
+        "gitter": [
+            "https://gitter.im/amberframework/amber"
+        ]
+    },
+    "shuup/shuup": {
+        "git": [
+            "https://github.com/shuup/shuup"
+        ],
+        "github:issue": [
+            "https://github.com/shuup/shuup"
+        ],
+        "github:pull": [
+            "https://github.com/shuup/shuup"
+        ],
+        "github2:issue": [
+            "https://github.com/shuup/shuup"
+        ],
+        "github2:pull": [
+            "https://github.com/shuup/shuup"
+        ],
+        "gitter": [
+            "https://gitter.im/shuup/shuup"
+        ]
+    },
+    "kriasoft/react-starter-kit": {
+        "git": [
+            "https://github.com/kriasoft/react-starter-kit"
+        ],
+        "github:issue": [
+            "https://github.com/kriasoft/react-starter-kit"
+        ],
+        "github:pull": [
+            "https://github.com/kriasoft/react-starter-kit"
+        ],
+        "github2:issue": [
+            "https://github.com/kriasoft/react-starter-kit"
+        ],
+        "github2:pull": [
+            "https://github.com/kriasoft/react-starter-kit"
+        ],
+        "gitter": [
+            "https://gitter.im/kriasoft/react-starter-kit"
+        ]
+    }
+}

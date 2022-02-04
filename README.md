@@ -60,6 +60,10 @@ To help with the generation of `grimoirelab-settings/projects.json` for our data
 
 ### Useful Commands
 
+### Known Issues
+* Mounting of single files to docker container requires restart of container for file to be updated
+* To reenrich indexes, elasticsearch enriched index must be deleted (sometimes it fails, so delete and restart container)
+
 ## GrimoireLab Enhancements
 <!-- ### GrimoireELK -->
 <!-- ### Sigils -->

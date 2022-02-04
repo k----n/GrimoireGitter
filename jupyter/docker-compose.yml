@@ -1,0 +1,16 @@
+version: "3"
+services:
+  jupyter:
+    build: .
+    volumes:
+      - .:/home/jovyan/
+    ports:
+      - 8888:8888
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+
+networks:
+  default:
+    external: true
+    name: grimoiregitter_default
+       
