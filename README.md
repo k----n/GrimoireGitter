@@ -149,11 +149,18 @@ Note that the `gitter` index needs to be refreshed by visiting http://localhost:
 For additional panels related to github issues and pull requests, you can load them with the following Kidash commands in the SirMordred container:
 ```sh
 docker exec -it grimoiregitter_mordred_1 kidash -e http://elasticsearch:9200 --import panels/github_issues-index-pattern.json
+docker exec -it grimoiregitter_mordred_1 kidash -e http://elasticsearch:9200 --import panels/github_issues_timing.json 
 docker exec -it grimoiregitter_mordred_1 kidash -e http://elasticsearch:9200 --import panels/github_issues_efficiency.json
 docker exec -it grimoiregitter_mordred_1 kidash -e http://elasticsearch:9200 --import panels/github_pull_requests_efficiency.json
 docker exec -it grimoiregitter_mordred_1 kidash -e http://elasticsearch:9200 --import panels/github_pull_requests_timing.json
 ```
 The panels can viewed by visiting http://localhost:5601/app/kibana#/dashboards
+
+The panels are called Sigils downloaded from:
+- https://chaoss.github.io/grimoirelab-sigils/panels/github-issues-timing/
+- https://chaoss.github.io/grimoirelab-sigils/panels/github-issues-efficiency/
+- https://chaoss.github.io/grimoirelab-sigils/panels/github-pullrequests-efficiency/
+- https://chaoss.github.io/grimoirelab-sigils/panels/github-pullrequests-timing/
 
 Note that these panels are available since the `panels` folder is mounted to the SirMordred container.
 
