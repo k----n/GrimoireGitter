@@ -62,7 +62,7 @@ The `grimoirelab-settings/elasticsearch.yml` is mounted to `/usr/share/elasticse
 ### Defining Projects
 Projects are defined in `grimoirelab-settings/projects.json` with the format defined here: https://github.com/chaoss/grimoirelab-sirmordred/blob/171cb813b636f8bc8f34c4ccbfa5d4b7d18c8f20/README.md#projectsjson-
 
-To help with the generation of `grimoirelab-settings/projects.json` for our data pipeline with `create_projects_file.py`.  A list of projects need to be to the source code of the script.
+To help with the generation of `grimoirelab-settings/projects.json` for our data pipeline with `create_projects_file.py`.  A list of projects need to be added to the source code of the script.
 
 <hr>
 
