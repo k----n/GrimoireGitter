@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 
 # specify the projects separated by line below
-gitter_rooms = """PerfectlySoft/Perfect
-                mailboxer/mailboxer
-                patchthecode/JTAppleCalendar
-                aws/aws-sdk-go
-                amberframework/amber
-                shuup/shuup
-                kriasoft/react-starter-kit
-                """.split('\n')
+gitter_rooms = """
+PerfectlySoft/Perfect
+mailboxer/mailboxer
+patchthecode/JTAppleCalendar
+aws/aws-sdk-go
+amberframework/amber
+shuup/shuup
+kriasoft/react-starter-kit
+""".split('\n')
 
 import json
 
