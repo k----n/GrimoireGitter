@@ -1,9 +1,12 @@
 library (ggplot2)
+
 # File downloaded from https://raw.githubusercontent.com/Hareem-E-Sahar/gitter/master/Scripts_Graphs/ResolutionTime_GitterIssues.csv
+# Change to correct path
 df<-read.csv("~/Downloads/ResolutionTime_GitterIssues.csv",header = TRUE)
 df2<-df[df$project=="amber" | df$project=="aws-sdk-go" | df$project=="JTAppleCalendar" | df$project=="Perfect" | df$project=="shuup.csv" | df$project=="mailboxer" | df$project=="react-starter-kit",]
 
-# Generated to output/grimoire_time_to_close_hours.csv by running "Preliminary Results.ipynb"
+# File generated to output/grimoire_time_to_close_hours.csv by running "Preliminary Results.ipynb"
+# Change to correct path
 grimoire<-read.csv("~/Downloads/grimoire_time_to_close_hours.csv",header=TRUE)
 
 previous<-data.frame("resolution time"=grimoire$time_to_close_hours,"project"=grimoire$project,"approach"="GrimoireLab")

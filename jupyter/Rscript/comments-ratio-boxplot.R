@@ -1,10 +1,12 @@
 library(ggplot2)
 
-# Contact https://github.com/Hareem-E-Sahar/gitter to obtain data
-data<-read.csv("~/Downloads/gitter/2-CombineCommentsForBoxplot-v3.csv",header=TRUE)
+# File downloaded from https://github.com/Hareem-E-Sahar/gitter/blob/master/2-CombineCommentsForBoxplot-v3.csv
+# Change to correct path
+data<-read.csv("~/Downloads/2-CombineCommentsForBoxplot-v3.csv",header=TRUE)
 df<-data[data$project=="aws-sdk-go" | data$project=="Perfect" | data$project=="JTAppleCalendar" | data$project=="amber" | data$project=="shuup" | data$project=="react-starter-kit",]
 
-# Generated to output/gitter_comments_count_1_week.csv by running "Preliminary Results.ipynb"
+# File generated to output/gitter_comments_count_1_week.csv by running "Preliminary Results.ipynb"
+# Change to correct path
 df2<-read.csv("~/Downloads/gitter_comments_count_1_week.csv",header=TRUE)
 newdf<-data.frame("project"=df$project, "ratio" = df$ratio, approach="Previous")
 

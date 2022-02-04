@@ -7,11 +7,14 @@ Participants:
 In this repostiory, we replicate the data collection pipeline of the paper: "*[How are issue reports discussed in Gitter chat rooms?](https://softwareprocess.es/pubs/sahar2020JSS-Gitter-Issues.pdf "How are issue reports discussed in Gitter chat rooms?")*" using [GrimoireLab](https://github.com/chaoss/grimoirelab "GrimoireLab").
 
 ### Projects Collected
-For the hackathon, we chose a subset of the original 24 Gitter chat rooms to test our GrimoireLab data pipeline. The projects are:
+For the hackathon, we chose a 7 of the original 24 Gitter chat rooms to test our GrimoireLab data pipeline. The projects are:
 - aws/aws-sdk-go ([Github](https://github.com/aws/aws-sdk-go "Github") | [Gitter](https://gitter.im/aws/aws-sdk-go "Gitter"))
 - patchthecode/JTAppleCalendar ([Github](https://github.com/patchthecode/JTAppleCalendar "Github") | [Gitter](https://gitter.im/patchthecode/JTAppleCalendar "Gitter"))
 - mailboxer/mailboxer ([Github](https://github.com/mailboxer/mailboxer "Github") | [Gitter](https://gitter.im/mailboxer/mailboxer "Gitter"))
 - PerfectlySoft/Perfect ([Github](https://github.com/PerfectlySoft/Perfect "Github") | [Gitter](https://gitter.im/PerfectlySoft/Perfect "Gitter"))
+- amberframework/amber ([Github](https://github.com/amberframework/amber "Github") | [Gitter](https://gitter.im/amberframework/amber "Gitter"))
+- shuup/shuup ([Github](https://github.com/shuup/shuup "Github") | [Gitter](https://gitter.im/shuup/shuup "Gitter"))
+- kriasoft/react-starter-kit ([Github](https://github.com/kriasoft/react-starter-kit "Github") | [Gitter](https://gitter.im/kriasoft/react-starter-kit "Gitter"))
 
 These projects were chosen because each project contains less than 5000 total issues and pull requests making the Github rate limit a minimal issue.
 
@@ -22,7 +25,7 @@ Using GrimoireLab, retrieving additional projects is a non-issue as `grimoirelab
 This data pipeline has been tested on Ubuntu 18.04 with 4 CPUs and 8GB of memory.
 
 Docker and Docker Compose are also installed on the system with the following commands:
-```
+```sh
 sudo curl -sSL https://get.docker.com/ | sh
 sudo usermod -a -G docker $(whoami)
 sudo service docker start
@@ -30,6 +33,8 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 ```
 After running the commands and a restart of your machine, the `docker-compose` and `docker` commands should work.
+
+<hr>
 
 ### API Token Creation
 Tokens need to be created for both Github and Gitter.
@@ -45,33 +50,102 @@ You can obtain your Gitter API key by visiting and signing in here: https://deve
 
 **Note:** You must join the chat room to use your token for mining the chat room.
 
+<hr>
+
 ### Elasticsearch
 To enable querying services such as [Mirage](https://opensource.appbase.io/mirage/ "Mirage") and [Dejavu](https://dejavu.appbase.io/ "Dejavu"), we create an `grimoirelab-settings/elasticsearch.yml` that contains settings for adding CORS headers. More information about configuring Elasticsearch can be found [here](https://www.elastic.co/guide/en/elasticsearch/reference/6.8/settings.html "here"). 
 
 The `grimoirelab-settings/elasticsearch.yml` is mounted to `/usr/share/elasticsearch/config/elasticsearch.yml` via Docker Compose.
 
+<hr>
+
 ### Defining Projects
 Projects are defined in `grimoirelab-settings/projects.json` with the format defined here: https://github.com/chaoss/grimoirelab-sirmordred/blob/171cb813b636f8bc8f34c4ccbfa5d4b7d18c8f20/README.md#projectsjson-
 
-To help with the generation of `grimoirelab-settings/projects.json` for our data pipeline with `filename.py`.  A list of projects need to be...
+To help with the generation of `grimoirelab-settings/projects.json` for our data pipeline with `create_projects_file.py`.  A list of projects need to be to the source code of the script.
+
+<hr>
 
 ### GrimoireLab Configuration
-`grimoirelab-settings/setup.cfg`
+We have provided an example configuration file in `grimoirelab-settings/setup.cfg.example` which will need:
+1. The API tokens for Gitter and Github to be inserted
+2. To be renamed to `grimoirelab-settings/setup.cfg.example`
 
-### Useful Commands
+<hr>
 
-### Known Issues
+### Running GrimoireLab
+Once all the setup steps have been completed, in the root repository run the following command:
+```sh
+docker-compose up -d
+```
+
+The Kibiter dashboard can be accessed at: `http://localhost:5601`
+The ElasticSearch instance can be accessed at: `http://localhost:9200`
+The HatStall web interface can be accessed at: `http://localhost:8000`
+
+#### Useful commands
+- See list of containers running: `docker ps`
+- Check SirMordred logs: `tail -f /tmp/all.log -n 200`
+- Restart SirMordred container: `docker restart grimoiregitter_mordred_1`
+- View Docker logs: `docker-compose logs -f`
+
+More detailed Docker Compose instructions can be found here: https://github.com/chaoss/grimoirelab/tree/master/docker-compose
+
+#### Known Issues
 * Mounting of single files to docker container requires restart of container for file to be updated
-* To reenrich indexes, elasticsearch enriched index must be deleted (sometimes it fails, so delete and restart container)
+* To reenrich indexes, elasticsearch enriched index must be deleted (sometimes it fails, so delete and restart mordred container)
 
-## GrimoireLab Enhancements
-<!-- ### GrimoireELK -->
-<!-- ### Sigils -->
-<!-- ### SortingHat Interface -->
+## GrimoireLab Adaptations
+### GrimoireElk Gitter Enrichment
+We modify the Gitter enrichment of GrimoireElk to do the following:
+- Better error reporting detailing UUID and repository
+- Handle improper URLs from the Gitter API (Issue: https://github.com/chaoss/grimoirelab-elk/issues/1029)
+- Improve issue classfication by leveraging the Github website (Issue: https://github.com/chaoss/grimoirelab-elk/issues/1028)
+
+### SortingHat Identity Alignment
+We also implement a naive script, to align identities that SortingHat may not have automatically aligned.
+
+To get started we have created a Jupyter Docker environment for running the script without dependencies:
+1. Navigate to the `jupyter` folder and run the following command:
+```sh
+docker-compose up -d
+```
+2. Access Jupter Lab by running `docker logs jupyter_jupyter_1` and finding the instruction to access under the line `   Or copy and paste one of these URLs:`
+3. Run the `SortingHat.ipynb` notebook by navigating to the following `Run > Restart Kenel and Run All Cells...`
+
+When the script has completed, the bottom of the notebook will have instructions on how to access HatStall and merge identities.
 
 ## Preliminary Results
+We gather data to replicate some of the results in *[How are issue reports discussed in Gitter chat rooms?](https://softwareprocess.es/pubs/sahar2020JSS-Gitter-Issues.pdf "How are issue reports discussed in Gitter chat rooms?")*.
 
-### Discussion
+The scripts for accessing the data can be run as follows:
+1. Navigate to the `jupyter` folder and run the following command:
+```sh
+docker-compose up -d
+```
+2. Access Jupter Lab by running `docker logs jupyter_jupyter_1` and finding the instruction to access under the line `   Or copy and paste one of these URLs:`
+3. Run the `Preliminary Results.ipynb` notebook by navigating to the following `Run > Restart Kenel and Run All Cells...`
 
-## Future Work
-<!-- This data pipeline can be further enhanced by... -->
+To generate the visualizations replicating a comparison between the:
+1. The Count of Gitter API Issues: It is generated in `Preliminary Results.ipynb` with the output to `jupyter/output/api_counts.pdf`
+2. Resolution time comparison between previous pipeline and GrimoireLab: Run the RScript `resolution_time.R` (instructions for input files are in the comments)
+3. Ratio of number of issue comments in Github one week after and before issue reference in Gitter: Run the RScript `comments-ratio-boxplot.R` (instructions for input files are in the comments)
+
+## Exploring Data
+To explore the data, you can use the Kibiter dashboard.
+
+Note that the `gitter` index needs to be refreshed by visiting http://localhost:5601/app/kibana#/management/kibana/indices/gitter and clicking the refresh button in the top right. 
+
+For additional panels related to github issues and pull requests, you can load them with the following Kidash commands in the SirMordred container:
+```sh
+docker exec -it grimoiregitter_mordred_1 kidash -e http://elasticsearch:9200 --import panels/github_issues-index-pattern.json
+docker exec -it grimoiregitter_mordred_1 kidash -e http://elasticsearch:9200 --import panels/github_issues_efficiency.json
+docker exec -it grimoiregitter_mordred_1 kidash -e http://elasticsearch:9200 --import panels/github_pull_requests_efficiency.json
+docker exec -it grimoiregitter_mordred_1 kidash -e http://elasticsearch:9200 --import panels/github_pull_requests_timing.json
+```
+The panels can viewed by visiting http://localhost:5601/app/kibana#/dashboards
+
+Note that these panels are available since the `panels` folder is mounted to the SirMordred container.
+
+## Need help?
+File an issue on this repository and we will respond to you as soon as possible.
