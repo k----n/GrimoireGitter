@@ -72,7 +72,7 @@ To help with the generation of `grimoirelab-settings/projects.json` for our data
 ### GrimoireLab Configuration
 We have provided an example configuration file in `grimoirelab-settings/setup.cfg.example` which will need:
 1. The API tokens for Gitter and Github to be inserted
-2. To be renamed to `grimoirelab-settings/setup.cfg.example`
+2. To be renamed to `grimoirelab-settings/setup.cfg`
 
 <hr>
 
