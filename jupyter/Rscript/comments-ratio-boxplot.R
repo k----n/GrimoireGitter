@@ -1,16 +1,16 @@
 library(ggplot2)
 
-# File downloaded from https://github.com/Hareem-E-Sahar/gitter/blob/master/2-CombineCommentsForBoxplot-v3.csv
+# File downloaded from https://github.com/Hareem-E-Sahar/gitter/blob/master/2-CombineCommentsForBoxplot-v3.csv and modified to have correct project names by running "Preliminary Results.ipynb"
 # Change to correct path
-data<-read.csv("~/Downloads/2-CombineCommentsForBoxplot-v3.csv",header=TRUE)
-df<-data[data$project=="aws-sdk-go" | data$project=="Perfect" | data$project=="JTAppleCalendar" | data$project=="amber" | data$project=="shuup" | data$project=="react-starter-kit",]
+df<-read.csv("/home/ubuntu/github/GrimoireGitter/jupyter/output/previous_comments_count_1_week.csv",header=TRUE)
 
 # File generated to output/gitter_comments_count_1_week.csv by running "Preliminary Results.ipynb"
 # Change to correct path
-df2<-read.csv("~/Downloads/gitter_comments_count_1_week.csv",header=TRUE)
-newdf<-data.frame("project"=df$project, "ratio" = df$ratio, approach="Previous")
+df2<-read.csv("/home/ubuntu/github/GrimoireGitter/jupyter/output/gitter_comments_count_1_week.csv",header=TRUE)
 
-newdf2<-data.frame("project"=df2$project, "ratio"=df2$ratio , approach="GrimoireLab")
+newdf<-data.frame("project"=df$project, "ratio" = df$ratio, approach="Previous")
+newdf2<-data.frame("project"=df2$short_name, "ratio"=df2$ratio , approach="GrimoireLab")
+
 final<-rbind(newdf,newdf2)
 
 ggplot(final, aes(x=project, y=(ratio))) + aes(type=approach )+
@@ -20,5 +20,6 @@ ggplot(final, aes(x=project, y=(ratio))) + aes(type=approach )+
         panel.border = element_blank(), panel.grid.major = element_blank(),
         panel.grid.minor = element_blank())+
   xlab(element_blank()) +
-  ylab("Comments Change Ratio") + geom_hline(yintercept=1.0,color='red') 
+  ylab("Comments Change Ratio") + geom_hline(yintercept=1.0,color='red')
   
+ggsave("comments_ratio_comparison.pdf", height = 4, width = 7)

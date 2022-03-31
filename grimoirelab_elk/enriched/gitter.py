@@ -176,6 +176,8 @@ class GitterEnrich(Enrich):
                 else:
                     repo_type = 'foreign'
 
+                entity['repo_type'] = repo_type
+
             # First check to see if issue could be determined via parsed html link
             if 'repo' in entity.keys() and 'number' in entity.keys() and links_found:
                 try:
