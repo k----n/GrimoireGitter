@@ -134,10 +134,9 @@ To generate the visualizations replicating a comparison between the:
 1. **The Count of Gitter API Issues**: It is generated in `Preliminary Results.ipynb` with the output to `jupyter/output/api_counts.pdf`
 ![image](https://user-images.githubusercontent.com/9467666/152589685-81f6ed72-df6e-4965-852b-eb6cffa5989d.png)
 2. **Resolution time comparison between previous pipeline and GrimoireLab**: Run the RScript `resolution_time.R` (instructions for input files are in the comments)
-![image](https://user-images.githubusercontent.com/9467666/152589773-9929ddaf-8ef7-4a9c-a52c-f65a0b47210e.png)
+![image](https://user-images.githubusercontent.com/9467666/161137378-341481ca-f42a-4f1c-af07-1e133be3184f.png)
 3. **Ratio of number of issue comments in Github one week after and before issue reference in Gitter**: Run the RScript `comments-ratio-boxplot.R` (instructions for input files are in the comments)
-![image](https://user-images.githubusercontent.com/9467666/152589935-8d6345e7-625d-48ca-9170-8eec2ef4fd5b.png)
-
+![image](https://user-images.githubusercontent.com/9467666/161137477-05bcb35a-b460-4b48-be05-b7a6ed9e469d.png)
 
 ## Exploring Data
 To explore the data, you can use the Kibiter dashboard at http://localhost:5601
